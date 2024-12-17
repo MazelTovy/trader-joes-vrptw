@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f10b58d8a5c14602f8fa2732c4c74e7e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; 
+                bottom: 50px; right: 50px; 
+                border:2px solid grey; z-index:9999;
+                background-color:white;
+                padding: 10px;
+                font-size:14px;">
+        <b>Trader Joe's 路径图</b><br>
+        <i class="fa fa-map-marker fa-2x" style="color:red"></i> 门店位置<br>
+        <i class="fa fa-line-chart fa-2x" style="color:blue"></i> 最短路径
+    </div>
+    
+    
+            <div class="folium-map" id="map_f10b58d8a5c14602f8fa2732c4c74e7e" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_f10b58d8a5c14602f8fa2732c4c74e7e = L.map(
+                "map_f10b58d8a5c14602f8fa2732c4c74e7e",
+                {
+                    center: [41.09420477002115, -74.28282713296682],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 11,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_87a434914d282d8127dcc6bd2c6a18cc = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_87a434914d282d8127dcc6bd2c6a18cc.addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var marker_24b813b08bab57ccdd82175b41467e28 = L.marker(
+                [40.6914157, -73.982755],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_ce73f58aa012e53ad0178f4fa6309750 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_24b813b08bab57ccdd82175b41467e28.setIcon(icon_ce73f58aa012e53ad0178f4fa6309750);
+        
+    
+        var popup_f01a1d308772a677e43fb3b70e93d224 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_78f848c1e2270d21fcfee73b6c89010c = $(`<div id="html_78f848c1e2270d21fcfee73b6c89010c" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Brooklyn - City Point (547)</b><br>             地址: 445 Gold St<br>             Brooklyn, NY 11201<br>             电话: (718) 243-0107         </div>         </div>`)[0];
+                popup_f01a1d308772a677e43fb3b70e93d224.setContent(html_78f848c1e2270d21fcfee73b6c89010c);
+            
+        
+
+        marker_24b813b08bab57ccdd82175b41467e28.bindPopup(popup_f01a1d308772a677e43fb3b70e93d224)
+        ;
+
+        
+    
+    
+            marker_24b813b08bab57ccdd82175b41467e28.bindTooltip(
+                `<div>
+                     Trader Joe's Brooklyn - City Point (547)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c3649e72c89e84064c58d77244e1d4b4 = L.marker(
+                [40.716489, -73.9660311],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_ef39c2079f2bbea6955209d0c36dbb3f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_c3649e72c89e84064c58d77244e1d4b4.setIcon(icon_ef39c2079f2bbea6955209d0c36dbb3f);
+        
+    
+        var popup_562f331d9d48dd07e0f86d6cce470f37 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3e63668a3bf35377602f0b6a96b6b6e9 = $(`<div id="html_3e63668a3bf35377602f0b6a96b6b6e9" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Brooklyn - Williamsburg (548)</b><br>             地址: 200 Kent Ave<br>             Brooklyn, NY 11249<br>             电话: (718) 218-7315         </div>         </div>`)[0];
+                popup_562f331d9d48dd07e0f86d6cce470f37.setContent(html_3e63668a3bf35377602f0b6a96b6b6e9);
+            
+        
+
+        marker_c3649e72c89e84064c58d77244e1d4b4.bindPopup(popup_562f331d9d48dd07e0f86d6cce470f37)
+        ;
+
+        
+    
+    
+            marker_c3649e72c89e84064c58d77244e1d4b4.bindTooltip(
+                `<div>
+                     Trader Joe's Brooklyn - Williamsburg (548)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ff25b22132fb1f6957b9c61d7915c855 = L.marker(
+                [40.68952075, -73.9928555596744],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_e90bde7d59f4e57d8ecb3f1bff3ecacd = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_ff25b22132fb1f6957b9c61d7915c855.setIcon(icon_e90bde7d59f4e57d8ecb3f1bff3ecacd);
+        
+    
+        var popup_fb4d0ab1f5498f9d7622cc1db7427acf = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d90e8fe68e90ff3825eb5a112651a783 = $(`<div id="html_d90e8fe68e90ff3825eb5a112651a783" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Brooklyn (558)</b><br>             地址: 130 Court St<br>             Brooklyn, NY 11201<br>             电话: (718) 246-8460         </div>         </div>`)[0];
+                popup_fb4d0ab1f5498f9d7622cc1db7427acf.setContent(html_d90e8fe68e90ff3825eb5a112651a783);
+            
+        
+
+        marker_ff25b22132fb1f6957b9c61d7915c855.bindPopup(popup_fb4d0ab1f5498f9d7622cc1db7427acf)
+        ;
+
+        
+    
+    
+            marker_ff25b22132fb1f6957b9c61d7915c855.bindTooltip(
+                `<div>
+                     Trader Joe's Brooklyn (558)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f01c9f81a852f93d7a00a7715539640c = L.marker(
+                [42.9983869, -78.8207969],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_2f5bbfb6f7669d7416a5c4402fd27cf9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_f01c9f81a852f93d7a00a7715539640c.setIcon(icon_2f5bbfb6f7669d7416a5c4402fd27cf9);
+        
+    
+        var popup_5e97191f48ba8d11165a3d3e3af2de81 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_76fe9f33df62da20ce4aec13ceab78a1 = $(`<div id="html_76fe9f33df62da20ce4aec13ceab78a1" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Amherst (536)</b><br>             地址: 1565 Niagara Falls Blvd<br>             Buffalo, NY 14228<br>             电话: (716) 833-4687         </div>         </div>`)[0];
+                popup_5e97191f48ba8d11165a3d3e3af2de81.setContent(html_76fe9f33df62da20ce4aec13ceab78a1);
+            
+        
+
+        marker_f01c9f81a852f93d7a00a7715539640c.bindPopup(popup_5e97191f48ba8d11165a3d3e3af2de81)
+        ;
+
+        
+    
+    
+            marker_f01c9f81a852f93d7a00a7715539640c.bindTooltip(
+                `<div>
+                     Trader Joe's Amherst (536)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b1cbb3ee40e54a08068643a6da752ae4 = L.marker(
+                [42.71421435, -73.81208684577993],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_d65831a3b875f046200b6154919a2540 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_b1cbb3ee40e54a08068643a6da752ae4.setIcon(icon_d65831a3b875f046200b6154919a2540);
+        
+    
+        var popup_56c4b52bae67960a3a4916e3d030c51a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_af821657838e7c35cd97a14d847489be = $(`<div id="html_af821657838e7c35cd97a14d847489be" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Colonie/Albany (535)</b><br>             地址: 79 Wolf Rd<br>             Colonie, NY 12205<br>             电话: (518) 482-4538         </div>         </div>`)[0];
+                popup_56c4b52bae67960a3a4916e3d030c51a.setContent(html_af821657838e7c35cd97a14d847489be);
+            
+        
+
+        marker_b1cbb3ee40e54a08068643a6da752ae4.bindPopup(popup_56c4b52bae67960a3a4916e3d030c51a)
+        ;
+
+        
+    
+    
+            marker_b1cbb3ee40e54a08068643a6da752ae4.bindTooltip(
+                `<div>
+                     Trader Joe's Colonie/Albany (535)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b82705d11e8cc8fa9f2626ac9286746a = L.marker(
+                [40.8402952, -73.3074897],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_7810559e5b0788dd3dbaa5b3ead786ea = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_b82705d11e8cc8fa9f2626ac9286746a.setIcon(icon_7810559e5b0788dd3dbaa5b3ead786ea);
+        
+    
+        var popup_38c18f57c31c8de60a8e26c1c3b14a31 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4b6bda2431e93fda4d5fa42cdca6fd08 = $(`<div id="html_4b6bda2431e93fda4d5fa42cdca6fd08" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Commack (551)</b><br>             地址: 5900 Jericho Turnpike<br>             Commack, NY 11725<br>             电话: (631) 499-0898         </div>         </div>`)[0];
+                popup_38c18f57c31c8de60a8e26c1c3b14a31.setContent(html_4b6bda2431e93fda4d5fa42cdca6fd08);
+            
+        
+
+        marker_b82705d11e8cc8fa9f2626ac9286746a.bindPopup(popup_38c18f57c31c8de60a8e26c1c3b14a31)
+        ;
+
+        
+    
+    
+            marker_b82705d11e8cc8fa9f2626ac9286746a.bindTooltip(
+                `<div>
+                     Trader Joe's Commack (551)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c000fdc5ca56cf18154ff1c698003ea2 = L.marker(
+                [40.7445181, -73.6041239],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_09755a34ccbe73c14f5cf421234378a7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_c000fdc5ca56cf18154ff1c698003ea2.setIcon(icon_09755a34ccbe73c14f5cf421234378a7);
+        
+    
+        var popup_5d4a904ca71c83f104a82669292fd235 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f44a57616ba13128546a61f94654bc33 = $(`<div id="html_f44a57616ba13128546a61f94654bc33" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Westbury (550)</b><br>             地址: 910 Old Country Rd<br>             Garden City, NY 11530<br>             电话: (516) 794-0174         </div>         </div>`)[0];
+                popup_5d4a904ca71c83f104a82669292fd235.setContent(html_f44a57616ba13128546a61f94654bc33);
+            
+        
+
+        marker_c000fdc5ca56cf18154ff1c698003ea2.bindPopup(popup_5d4a904ca71c83f104a82669292fd235)
+        ;
+
+        
+    
+    
+            marker_c000fdc5ca56cf18154ff1c698003ea2.bindTooltip(
+                `<div>
+                     Trader Joe's Westbury (550)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6624a4eceab39e65815f4f4dedf42470 = L.marker(
+                [41.025499, -73.7934466],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_8a4c2e2cdc276c3a3933bf68bd4968d8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_6624a4eceab39e65815f4f4dedf42470.setIcon(icon_8a4c2e2cdc276c3a3933bf68bd4968d8);
+        
+    
+        var popup_43bf75b706c58a8cae0363b272b89e6a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6ed6dd35d16cad9522f0515aa683cdaf = $(`<div id="html_6ed6dd35d16cad9522f0515aa683cdaf" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Hartsdale (533)</b><br>             地址: 215 N Central Ave<br>             Hartsdale, NY 10530<br>             电话: (914) 997-1960         </div>         </div>`)[0];
+                popup_43bf75b706c58a8cae0363b272b89e6a.setContent(html_6ed6dd35d16cad9522f0515aa683cdaf);
+            
+        
+
+        marker_6624a4eceab39e65815f4f4dedf42470.bindPopup(popup_43bf75b706c58a8cae0363b272b89e6a)
+        ;
+
+        
+    
+    
+            marker_6624a4eceab39e65815f4f4dedf42470.bindTooltip(
+                `<div>
+                     Trader Joe's Hartsdale (533)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_29d923632905779cdcda36d708b3c43a = L.marker(
+                [40.6392458, -73.70171898763786],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_120caa50fd2d4d298d2ca16a09ac1b2a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_29d923632905779cdcda36d708b3c43a.setIcon(icon_120caa50fd2d4d298d2ca16a09ac1b2a);
+        
+    
+        var popup_5b53a808879a4efc5e0dbf03c7b784a1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_fa8a0112844b496bd855bd027792633c = $(`<div id="html_fa8a0112844b496bd855bd027792633c" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Hewlett (554)</b><br>             地址: 1280 West Broadway<br>             Hewlett, NY 11557<br>             电话: (516) 569-7191         </div>         </div>`)[0];
+                popup_5b53a808879a4efc5e0dbf03c7b784a1.setContent(html_fa8a0112844b496bd855bd027792633c);
+            
+        
+
+        marker_29d923632905779cdcda36d708b3c43a.bindPopup(popup_5b53a808879a4efc5e0dbf03c7b784a1)
+        ;
+
+        
+    
+    
+            marker_29d923632905779cdcda36d708b3c43a.bindTooltip(
+                `<div>
+                     Trader Joe's Hewlett (554)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7b7813813a790c284e65cf994885dae3 = L.marker(
+                [42.4282228, -76.510214],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_0f595bfc57a88db8b0537daffe9c0c53 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_7b7813813a790c284e65cf994885dae3.setIcon(icon_0f595bfc57a88db8b0537daffe9c0c53);
+        
+    
+        var popup_a2ad29169490eae7f7119fb97b07f725 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d1b90e0b62c879cf19f1817a44583bf9 = $(`<div id="html_d1b90e0b62c879cf19f1817a44583bf9" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Ithaca (568)</b><br>             地址: 744 S Meadow Street<br>             Ithaca, NY 14850<br>             电话: (607) 272-1420         </div>         </div>`)[0];
+                popup_a2ad29169490eae7f7119fb97b07f725.setContent(html_d1b90e0b62c879cf19f1817a44583bf9);
+            
+        
+
+        marker_7b7813813a790c284e65cf994885dae3.bindPopup(popup_a2ad29169490eae7f7119fb97b07f725)
+        ;
+
+        
+    
+    
+            marker_7b7813813a790c284e65cf994885dae3.bindTooltip(
+                `<div>
+                     Trader Joe's Ithaca (568)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9eb7973d249e6a821dea3d9bba6619ca = L.marker(
+                [40.938228, -73.7465468],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_32915407f92b109c6de045e69580d80c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_9eb7973d249e6a821dea3d9bba6619ca.setIcon(icon_32915407f92b109c6de045e69580d80c);
+        
+    
+        var popup_84df75c19d6ceb5a3135be93c121c7fd = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_93cb139c6075263c84f149750ee753fe = $(`<div id="html_93cb139c6075263c84f149750ee753fe" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Larchmont (532)</b><br>             地址: 1260 Boston Post Rd<br>             Larchmont, NY 10538<br>             电话: (914) 833-9112         </div>         </div>`)[0];
+                popup_84df75c19d6ceb5a3135be93c121c7fd.setContent(html_93cb139c6075263c84f149750ee753fe);
+            
+        
+
+        marker_9eb7973d249e6a821dea3d9bba6619ca.bindPopup(popup_84df75c19d6ceb5a3135be93c121c7fd)
+        ;
+
+        
+    
+    
+            marker_9eb7973d249e6a821dea3d9bba6619ca.bindTooltip(
+                `<div>
+                     Trader Joe's Larchmont (532)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5308cbe542cb330409757d836e801bd6 = L.marker(
+                [40.65372764705882, -73.55878379411766],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_eabb5d837993a24c2dc90a32672199ce = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_5308cbe542cb330409757d836e801bd6.setIcon(icon_eabb5d837993a24c2dc90a32672199ce);
+        
+    
+        var popup_5cab709288dcf4a5e0091e096b191519 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b3da20656154f9c9e5b8168c4413bde0 = $(`<div id="html_b3da20656154f9c9e5b8168c4413bde0" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Merrick (553)</b><br>             地址: 1714 Merrick Rd<br>             Merrick, NY 11566<br>             电话: (516) 771-1012         </div>         </div>`)[0];
+                popup_5cab709288dcf4a5e0091e096b191519.setContent(html_b3da20656154f9c9e5b8168c4413bde0);
+            
+        
+
+        marker_5308cbe542cb330409757d836e801bd6.bindPopup(popup_5cab709288dcf4a5e0091e096b191519)
+        ;
+
+        
+    
+    
+            marker_5308cbe542cb330409757d836e801bd6.bindTooltip(
+                `<div>
+                     Trader Joe's Merrick (553)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_99ee139669d2bc22689a1f7c0b50525d = L.marker(
+                [40.7785925, -73.9822755],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_9ec3963dc8810c713738403649d859fc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_99ee139669d2bc22689a1f7c0b50525d.setIcon(icon_9ec3963dc8810c713738403649d859fc);
+        
+    
+        var popup_7d560b3e4dcc03d66fe335b48a30f8da = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5a3a0cce259e74922ed909cbc73f41ad = $(`<div id="html_5a3a0cce259e74922ed909cbc73f41ad" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's 72nd & Broadway (542)</b><br>             地址: 2073 Broadway<br>             New York, NY 10023<br>             电话: (212) 799-0028         </div>         </div>`)[0];
+                popup_7d560b3e4dcc03d66fe335b48a30f8da.setContent(html_5a3a0cce259e74922ed909cbc73f41ad);
+            
+        
+
+        marker_99ee139669d2bc22689a1f7c0b50525d.bindPopup(popup_7d560b3e4dcc03d66fe335b48a30f8da)
+        ;
+
+        
+    
+    
+            marker_99ee139669d2bc22689a1f7c0b50525d.bindTooltip(
+                `<div>
+                     Trader Joe's 72nd & Broadway (542)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8a7e6788f2a12e0b907f107d3a2f5e39 = L.marker(
+                [40.7418779, -73.9938343],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_90afea221c63c2c97f25cda43872ad5b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_8a7e6788f2a12e0b907f107d3a2f5e39.setIcon(icon_90afea221c63c2c97f25cda43872ad5b);
+        
+    
+        var popup_1b96258fa6221ec2fc31c3f54cfc303f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ccf9e84b59e7142da77e9d0a703000e5 = $(`<div id="html_ccf9e84b59e7142da77e9d0a703000e5" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Chelsea (543)</b><br>             地址: 675 6th Ave<br>             New York, NY 10010<br>             电话: (212) 255-2106         </div>         </div>`)[0];
+                popup_1b96258fa6221ec2fc31c3f54cfc303f.setContent(html_ccf9e84b59e7142da77e9d0a703000e5);
+            
+        
+
+        marker_8a7e6788f2a12e0b907f107d3a2f5e39.bindPopup(popup_1b96258fa6221ec2fc31c3f54cfc303f)
+        ;
+
+        
+    
+    
+            marker_8a7e6788f2a12e0b907f107d3a2f5e39.bindTooltip(
+                `<div>
+                     Trader Joe's Chelsea (543)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ef526a89bf76e6952c12c18eaca5e340 = L.marker(
+                [40.7305095, -73.9810994],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_c6db8f6dbdd59e9431c10cd1b7116fdd = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_ef526a89bf76e6952c12c18eaca5e340.setIcon(icon_c6db8f6dbdd59e9431c10cd1b7116fdd);
+        
+    
+        var popup_68e5e93d5ffec0240f249b19a7fbc63d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a6141e85711f9c6764bf6788eec0f26c = $(`<div id="html_a6141e85711f9c6764bf6788eec0f26c" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's East Village (546)</b><br>             地址: 436 East 14th St<br>             New York, NY 10009<br>             电话: (212) 777-9412         </div>         </div>`)[0];
+                popup_68e5e93d5ffec0240f249b19a7fbc63d.setContent(html_a6141e85711f9c6764bf6788eec0f26c);
+            
+        
+
+        marker_ef526a89bf76e6952c12c18eaca5e340.bindPopup(popup_68e5e93d5ffec0240f249b19a7fbc63d)
+        ;
+
+        
+    
+    
+            marker_ef526a89bf76e6952c12c18eaca5e340.bindTooltip(
+                `<div>
+                     Trader Joe's East Village (546)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_51db1f4109d9f3a27d3761dac4de3e7b = L.marker(
+                [40.808147224489794, -73.94614669387755],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_9cda47bd7c7249f40ce362017599c25b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_51db1f4109d9f3a27d3761dac4de3e7b.setIcon(icon_9cda47bd7c7249f40ce362017599c25b);
+        
+    
+        var popup_8d2bcf7fc5a280737260092113751e1b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0d75a2d860471ec269d8f38f899fb7db = $(`<div id="html_0d75a2d860471ec269d8f38f899fb7db" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Harlem (576)</b><br>             地址: 123 W 125th St<br>             New York, NY 10027<br>             电话: (646) 337-1986         </div>         </div>`)[0];
+                popup_8d2bcf7fc5a280737260092113751e1b.setContent(html_0d75a2d860471ec269d8f38f899fb7db);
+            
+        
+
+        marker_51db1f4109d9f3a27d3761dac4de3e7b.bindPopup(popup_8d2bcf7fc5a280737260092113751e1b)
+        ;
+
+        
+    
+    
+            marker_51db1f4109d9f3a27d3761dac4de3e7b.bindTooltip(
+                `<div>
+                     Trader Joe's Harlem (576)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9069d13d8438474c17e8623f760697d4 = L.marker(
+                [40.7439285, -73.97902272055029],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_d056cc7b2e30cf00dea65eef2a22f25b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_9069d13d8438474c17e8623f760697d4.setIcon(icon_d056cc7b2e30cf00dea65eef2a22f25b);
+        
+    
+        var popup_1402b1e874cfb4d9a3197ac2d5269979 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_bea2dabc8a38085caf45db78f3877661 = $(`<div id="html_bea2dabc8a38085caf45db78f3877661" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's New York - Murray Hill (544)</b><br>             地址: 200 E 32nd St<br>             New York, NY 10016<br>             电话: (212) 889-3279         </div>         </div>`)[0];
+                popup_1402b1e874cfb4d9a3197ac2d5269979.setContent(html_bea2dabc8a38085caf45db78f3877661);
+            
+        
+
+        marker_9069d13d8438474c17e8623f760697d4.bindPopup(popup_1402b1e874cfb4d9a3197ac2d5269979)
+        ;
+
+        
+    
+    
+            marker_9069d13d8438474c17e8623f760697d4.bindTooltip(
+                `<div>
+                     Trader Joe's New York - Murray Hill (544)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d35421d3a8fd34487413ace90d418c8c = L.marker(
+                [40.7257262, -74.0050347],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_30ce4a007e9c3ab9b41d0785bfa2b6d5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_d35421d3a8fd34487413ace90d418c8c.setIcon(icon_30ce4a007e9c3ab9b41d0785bfa2b6d5);
+        
+    
+        var popup_8f1d7d8bb17bc5edc9ae8924e6806aba = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_22050aa39752a175bd9fc970e188f865 = $(`<div id="html_22050aa39752a175bd9fc970e188f865" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's SoHo (539)</b><br>             地址: 233 Spring Street<br>             New York, NY 10013<br>             电话: (212) 691-2721         </div>         </div>`)[0];
+                popup_8f1d7d8bb17bc5edc9ae8924e6806aba.setContent(html_22050aa39752a175bd9fc970e188f865);
+            
+        
+
+        marker_d35421d3a8fd34487413ace90d418c8c.bindPopup(popup_8f1d7d8bb17bc5edc9ae8924e6806aba)
+        ;
+
+        
+    
+    
+            marker_d35421d3a8fd34487413ace90d418c8c.bindTooltip(
+                `<div>
+                     Trader Joe's SoHo (539)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_686f2188d58165a690ef4df4fa901e4d = L.marker(
+                [40.7334209, -73.987875],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_44d2bc05453664c8de389a5e8643178e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_686f2188d58165a690ef4df4fa901e4d.setIcon(icon_44d2bc05453664c8de389a5e8643178e);
+        
+    
+        var popup_20bb34608a31a40c2cfcdc4501eb4e37 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_37f8604e02f01e0ebc4cfaaf145a6f49 = $(`<div id="html_37f8604e02f01e0ebc4cfaaf145a6f49" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Union Square (540)</b><br>             地址: 142 E 14th St<br>             New York, NY 10003<br>             电话: (212) 529-4612         </div>         </div>`)[0];
+                popup_20bb34608a31a40c2cfcdc4501eb4e37.setContent(html_37f8604e02f01e0ebc4cfaaf145a6f49);
+            
+        
+
+        marker_686f2188d58165a690ef4df4fa901e4d.bindPopup(popup_20bb34608a31a40c2cfcdc4501eb4e37)
+        ;
+
+        
+    
+    
+            marker_686f2188d58165a690ef4df4fa901e4d.bindTooltip(
+                `<div>
+                     Trader Joe's Union Square (540)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6b25bb29ce03821b60806bf4efd10055 = L.marker(
+                [40.7596586, -73.9613341],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_2c8f76821f3b918abe631c7463fc1a13 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_6b25bb29ce03821b60806bf4efd10055.setIcon(icon_2c8f76821f3b918abe631c7463fc1a13);
+        
+    
+        var popup_66f4be1c7502f6cbc88665c0045dc707 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6c2865283981fb012c0e65a7c054f792 = $(`<div id="html_6c2865283981fb012c0e65a7c054f792" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Upper East Side - Bridgemarket (571)</b><br>             地址: 405 E. 59th Street<br>             New York, NY 10022<br>             电话: (212) 935-3870         </div>         </div>`)[0];
+                popup_66f4be1c7502f6cbc88665c0045dc707.setContent(html_6c2865283981fb012c0e65a7c054f792);
+            
+        
+
+        marker_6b25bb29ce03821b60806bf4efd10055.bindPopup(popup_66f4be1c7502f6cbc88665c0045dc707)
+        ;
+
+        
+    
+    
+            marker_6b25bb29ce03821b60806bf4efd10055.bindTooltip(
+                `<div>
+                     Trader Joe's Upper East Side - Bridgemarket (571)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f94001783ea40e49c5c3ea355a2ca14e = L.marker(
+                [40.7908664, -73.9692378],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_a8161e7196f19f8c41a4b064bcce770b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_f94001783ea40e49c5c3ea355a2ca14e.setIcon(icon_a8161e7196f19f8c41a4b064bcce770b);
+        
+    
+        var popup_088e8ac35367681df2f086212f8c7d07 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2e52852b5f8c5a76a0476c4976ffcdaf = $(`<div id="html_2e52852b5f8c5a76a0476c4976ffcdaf" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Upper West Side (545)</b><br>             地址: 670 Columbus Ave<br>             New York, NY 10025<br>             电话: (212) 678-1680         </div>         </div>`)[0];
+                popup_088e8ac35367681df2f086212f8c7d07.setContent(html_2e52852b5f8c5a76a0476c4976ffcdaf);
+            
+        
+
+        marker_f94001783ea40e49c5c3ea355a2ca14e.bindPopup(popup_088e8ac35367681df2f086212f8c7d07)
+        ;
+
+        
+    
+    
+            marker_f94001783ea40e49c5c3ea355a2ca14e.bindTooltip(
+                `<div>
+                     Trader Joe's Upper West Side (545)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b75d4075d3d4cccb4b0874126394e142 = L.marker(
+                [40.62680305, -73.64109822690892],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_5970de48c2bb59e7f36c5dc4b4555ba7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_b75d4075d3d4cccb4b0874126394e142.setIcon(icon_5970de48c2bb59e7f36c5dc4b4555ba7);
+        
+    
+        var popup_f0ecdd3e68af2cee78405d6e1b4fcc64 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c439fdaaccd47c97fa2868143fd00d7d = $(`<div id="html_c439fdaaccd47c97fa2868143fd00d7d" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Oceanside (552)</b><br>             地址: 3418 Long Beach Rd<br>             Oceanside, NY 11572<br>             电话: (516) 536-9163         </div>         </div>`)[0];
+                popup_f0ecdd3e68af2cee78405d6e1b4fcc64.setContent(html_c439fdaaccd47c97fa2868143fd00d7d);
+            
+        
+
+        marker_b75d4075d3d4cccb4b0874126394e142.bindPopup(popup_f0ecdd3e68af2cee78405d6e1b4fcc64)
+        ;
+
+        
+    
+    
+            marker_b75d4075d3d4cccb4b0874126394e142.bindTooltip(
+                `<div>
+                     Trader Joe's Oceanside (552)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3824bea7aeed39d492aa79e8e1d33b1a = L.marker(
+                [40.7818792, -73.5015393],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_7d86071cc267d87ef4307824ece91c99 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_3824bea7aeed39d492aa79e8e1d33b1a.setIcon(icon_7d86071cc267d87ef4307824ece91c99);
+        
+    
+        var popup_bd597a5abaa3a0ddbba034d5dcf0e42f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f27a9beedbf187d5ad7a6f6746b01cf1 = $(`<div id="html_f27a9beedbf187d5ad7a6f6746b01cf1" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Plainview (555)</b><br>             地址: 425 S Oyster Bay Rd<br>             Plainview, NY 11803<br>             电话: (516) 933-6900         </div>         </div>`)[0];
+                popup_bd597a5abaa3a0ddbba034d5dcf0e42f.setContent(html_f27a9beedbf187d5ad7a6f6746b01cf1);
+            
+        
+
+        marker_3824bea7aeed39d492aa79e8e1d33b1a.bindPopup(popup_bd597a5abaa3a0ddbba034d5dcf0e42f)
+        ;
+
+        
+    
+    
+            marker_3824bea7aeed39d492aa79e8e1d33b1a.bindTooltip(
+                `<div>
+                     Trader Joe's Plainview (555)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_563d174ff965ad962918111770c65c49 = L.marker(
+                [40.7226474, -73.848109],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_4c10ae4d6ab5306fa2c7c739f9e1f637 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_563d174ff965ad962918111770c65c49.setIcon(icon_4c10ae4d6ab5306fa2c7c739f9e1f637);
+        
+    
+        var popup_1fa9e6e014a3450e84dcb2573e0002f9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_72098b18e9469283ecf9a8b90ebd07ef = $(`<div id="html_72098b18e9469283ecf9a8b90ebd07ef" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Forest Hills (578)</b><br>             地址: 69-65 Yellowstone Blvd<br>             Queens, NY 11375<br>             电话: (718) 544-8589         </div>         </div>`)[0];
+                popup_1fa9e6e014a3450e84dcb2573e0002f9.setContent(html_72098b18e9469283ecf9a8b90ebd07ef);
+            
+        
+
+        marker_563d174ff965ad962918111770c65c49.bindPopup(popup_1fa9e6e014a3450e84dcb2573e0002f9)
+        ;
+
+        
+    
+    
+            marker_563d174ff965ad962918111770c65c49.bindTooltip(
+                `<div>
+                     Trader Joe's Forest Hills (578)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e3d0f78bad66e1294d164353c3a174ae = L.marker(
+                [40.745847600000005, -73.94627490398517],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_5e28567786542133fac27618bc6cf792 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_e3d0f78bad66e1294d164353c3a174ae.setIcon(icon_5e28567786542133fac27618bc6cf792);
+        
+    
+        var popup_82a236f142e1b1acf94c9315ce9deb33 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d2fa8ed3ef08dd99fe9a77c0ebc720bb = $(`<div id="html_d2fa8ed3ef08dd99fe9a77c0ebc720bb" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Long Island City (565)</b><br>             地址: 22-43 Jackson Ave<br>             Queens, NY 11101<br>             电话: (718) 472-2672         </div>         </div>`)[0];
+                popup_82a236f142e1b1acf94c9315ce9deb33.setContent(html_d2fa8ed3ef08dd99fe9a77c0ebc720bb);
+            
+        
+
+        marker_e3d0f78bad66e1294d164353c3a174ae.bindPopup(popup_82a236f142e1b1acf94c9315ce9deb33)
+        ;
+
+        
+    
+    
+            marker_e3d0f78bad66e1294d164353c3a174ae.bindTooltip(
+                `<div>
+                     Trader Joe's Long Island City (565)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_89098b79ef36fb90a12a9ca597e55e2a = L.marker(
+                [40.7111513, -73.8581219],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_5118b1af1f0e79de571288ddf418bbe5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_89098b79ef36fb90a12a9ca597e55e2a.setIcon(icon_5118b1af1f0e79de571288ddf418bbe5);
+        
+    
+        var popup_e1d1276426c0360e7e458e87b579b3fe = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_262ad4335506e467c987b8e009cd7437 = $(`<div id="html_262ad4335506e467c987b8e009cd7437" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Rego Park (557)</b><br>             地址: 9030 Metropolitan Ave<br>             Queens, NY 11374<br>             电话: (718) 275-1791         </div>         </div>`)[0];
+                popup_e1d1276426c0360e7e458e87b579b3fe.setContent(html_262ad4335506e467c987b8e009cd7437);
+            
+        
+
+        marker_89098b79ef36fb90a12a9ca597e55e2a.bindPopup(popup_e1d1276426c0360e7e458e87b579b3fe)
+        ;
+
+        
+    
+    
+            marker_89098b79ef36fb90a12a9ca597e55e2a.bindTooltip(
+                `<div>
+                     Trader Joe's Rego Park (557)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d8ce53ff2e1e1e6fd8db42a23ef862f9 = L.marker(
+                [43.1039528, -77.5417409],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_8dc157644412637f46344e75e71daa03 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_d8ce53ff2e1e1e6fd8db42a23ef862f9.setIcon(icon_8dc157644412637f46344e75e71daa03);
+        
+    
+        var popup_47e1348067680738638ac931d5391b7c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_30d783584bf46a83c7344bf875ff0932 = $(`<div id="html_30d783584bf46a83c7344bf875ff0932" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Rochester (534)</b><br>             地址: 3349 Monroe Ave<br>             Rochester, NY 14618<br>             电话: (585) 248-5011         </div>         </div>`)[0];
+                popup_47e1348067680738638ac931d5391b7c.setContent(html_30d783584bf46a83c7344bf875ff0932);
+            
+        
+
+        marker_d8ce53ff2e1e1e6fd8db42a23ef862f9.bindPopup(popup_47e1348067680738638ac931d5391b7c)
+        ;
+
+        
+    
+    
+            marker_d8ce53ff2e1e1e6fd8db42a23ef862f9.bindTooltip(
+                `<div>
+                     Trader Joe's Rochester (534)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6289a13f01024cb63590b8564cb5ad13 = L.marker(
+                [40.9723228, -73.8048298],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_76487c00fab65256bd00732b6f05abf0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_6289a13f01024cb63590b8564cb5ad13.setIcon(icon_76487c00fab65256bd00732b6f05abf0);
+        
+    
+        var popup_60464309b4ea82ec9448ea5407f2ce9d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d4cdb38ec4b7d00092e8d080671141c9 = $(`<div id="html_d4cdb38ec4b7d00092e8d080671141c9" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Scarsdale (531)</b><br>             地址: 727 White Plains Rd<br>             Scarsdale, NY 10583<br>             电话: (914) 472-2988         </div>         </div>`)[0];
+                popup_60464309b4ea82ec9448ea5407f2ce9d.setContent(html_d4cdb38ec4b7d00092e8d080671141c9);
+            
+        
+
+        marker_6289a13f01024cb63590b8564cb5ad13.bindPopup(popup_60464309b4ea82ec9448ea5407f2ce9d)
+        ;
+
+        
+    
+    
+            marker_6289a13f01024cb63590b8564cb5ad13.bindTooltip(
+                `<div>
+                     Trader Joe's Scarsdale (531)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_42f12cd2caba32f6176ee43213b61ee2 = L.marker(
+                [40.521687739130435, -74.21690552173912],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_1a72218a3954a393de760eb254d9c711 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_42f12cd2caba32f6176ee43213b61ee2.setIcon(icon_1a72218a3954a393de760eb254d9c711);
+        
+    
+        var popup_dfbb5c8fa6acc8537cfd3c0f3f1ee3f1 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_7be3e90d35110c14695cfe5d5e2c169f = $(`<div id="html_7be3e90d35110c14695cfe5d5e2c169f" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Staten Island - Tottenville (580)</b><br>             地址: 6400 Amboy Rd<br>             Staten Island, NY 10309<br>             电话: nan         </div>         </div>`)[0];
+                popup_dfbb5c8fa6acc8537cfd3c0f3f1ee3f1.setContent(html_7be3e90d35110c14695cfe5d5e2c169f);
+            
+        
+
+        marker_42f12cd2caba32f6176ee43213b61ee2.bindPopup(popup_dfbb5c8fa6acc8537cfd3c0f3f1ee3f1)
+        ;
+
+        
+    
+    
+            marker_42f12cd2caba32f6176ee43213b61ee2.bindTooltip(
+                `<div>
+                     Trader Joe's Staten Island - Tottenville (580)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_63f95244a1481bd95e8c9d4b300663bf = L.marker(
+                [40.5899749, -74.1658103],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_7c8b26fa2083a6f149579d470f259814 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_63f95244a1481bd95e8c9d4b300663bf.setIcon(icon_7c8b26fa2083a6f149579d470f259814);
+        
+    
+        var popup_4d32b3873cb17a7be06199aa645e1f83 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_166e2dc83545190fce7e7b3cc59404fb = $(`<div id="html_166e2dc83545190fce7e7b3cc59404fb" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Staten Island (559)</b><br>             地址: 2385 Richmond Ave<br>             Staten Island, NY 10314<br>             电话: (718) 370-1085         </div>         </div>`)[0];
+                popup_4d32b3873cb17a7be06199aa645e1f83.setContent(html_166e2dc83545190fce7e7b3cc59404fb);
+            
+        
+
+        marker_63f95244a1481bd95e8c9d4b300663bf.bindPopup(popup_4d32b3873cb17a7be06199aa645e1f83)
+        ;
+
+        
+    
+    
+            marker_63f95244a1481bd95e8c9d4b300663bf.bindTooltip(
+                `<div>
+                     Trader Joe's Staten Island (559)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_18e694e927f5ce5209fb3e6a928d8fa6 = L.marker(
+                [43.054110179997785, -76.0990999714449],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_647a0c7cccd12d808800e1fcd13fe612 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_18e694e927f5ce5209fb3e6a928d8fa6.setIcon(icon_647a0c7cccd12d808800e1fcd13fe612);
+        
+    
+        var popup_acd0c2f960c56eb0458213b461f4cf63 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a125813466dd21b1e1d89513b334d9b3 = $(`<div id="html_a125813466dd21b1e1d89513b334d9b3" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Syracuse (537)</b><br>             地址: 3422 Erie Blvd E<br>             Syracuse, NY 13214<br>             电话: (315) 446-1629         </div>         </div>`)[0];
+                popup_acd0c2f960c56eb0458213b461f4cf63.setContent(html_a125813466dd21b1e1d89513b334d9b3);
+            
+        
+
+        marker_18e694e927f5ce5209fb3e6a928d8fa6.bindPopup(popup_acd0c2f960c56eb0458213b461f4cf63)
+        ;
+
+        
+    
+    
+            marker_18e694e927f5ce5209fb3e6a928d8fa6.bindTooltip(
+                `<div>
+                     Trader Joe's Syracuse (537)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_61ea78c9f22b877f2323667ce5aac149 = L.marker(
+                [41.2916847, -73.82422902922201],
+                {}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+            var icon_becaa814253be698731c7cccd8ecf165 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_61ea78c9f22b877f2323667ce5aac149.setIcon(icon_becaa814253be698731c7cccd8ecf165);
+        
+    
+        var popup_3d6cf4cbb704bb27e1789f11d331214b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_fb77d2df403700b13830003269215ce2 = $(`<div id="html_fb77d2df403700b13830003269215ce2" style="width: 100.0%; height: 100.0%;">         <div style="width:200px">             <b>Trader Joe's Yorktown (567)</b><br>             地址: 3240 Crompond Road<br>             Yorktown, NY 10598<br>             电话: (914) 737-1460         </div>         </div>`)[0];
+                popup_3d6cf4cbb704bb27e1789f11d331214b.setContent(html_fb77d2df403700b13830003269215ce2);
+            
+        
+
+        marker_61ea78c9f22b877f2323667ce5aac149.bindPopup(popup_3d6cf4cbb704bb27e1789f11d331214b)
+        ;
+
+        
+    
+    
+            marker_61ea78c9f22b877f2323667ce5aac149.bindTooltip(
+                `<div>
+                     Trader Joe's Yorktown (567)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_7acb47e30a888d617050b503b2bd6370 = L.polyline(
+                [[40.73066, -73.98095], [40.73071, -73.98102], [40.73072, -73.98105], [40.73073, -73.98107], [40.73103, -73.98177], [40.73115, -73.98206], [40.73121, -73.9822], [40.73131, -73.98243], [40.73136, -73.98256], [40.73144, -73.9825], [40.73185, -73.9822], [40.7319, -73.98215], [40.73198, -73.9821], [40.73203, -73.98206], [40.7321, -73.98222], [40.73267, -73.98359], [40.7327, -73.98365], [40.73273, -73.98371], [40.73298, -73.98433], [40.733, -73.98436], [40.73303, -73.98444], [40.73308, -73.98456], [40.73337, -73.98524], [40.7334, -73.98531], [40.73363, -73.98585], [40.73391, -73.9865], [40.73393, -73.98655], [40.73398, -73.98669], [40.73393, -73.98673], [40.73388, -73.98676], [40.73375, -73.98686], [40.7336, -73.98697], [40.73344, -73.98708], [40.73339, -73.98712], [40.7333, -73.98719], [40.73336, -73.98732], [40.73338, -73.98738], [40.73348, -73.98762], [40.73355, -73.98778]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+        var popup_502b39aecd723afa9a80e80106d6e393 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7020f154e9b7975147737405ecc38258 = $(`<div id="html_7020f154e9b7975147737405ecc38258" style="width: 100.0%; height: 100.0%;">距离: 0.83km 时间: 2分钟 从 Trader Joe's East Village (546) 到 Trader Joe's Union Square (540)</div>`)[0];
+                popup_502b39aecd723afa9a80e80106d6e393.setContent(html_7020f154e9b7975147737405ecc38258);
+            
+        
+
+        poly_line_7acb47e30a888d617050b503b2bd6370.bindPopup(popup_502b39aecd723afa9a80e80106d6e393)
+        ;
+
+        
+    
+    
+            var poly_line_e099aadb391872783291f998745a2e49 = L.polyline(
+                [[40.69153, -73.98236], [40.69123, -73.98221], [40.69117, -73.98218], [40.69002, -73.9816], [40.68993, -73.98155], [40.68986, -73.98152], [40.68976, -73.98146], [40.68951, -73.98133], [40.68906, -73.98112], [40.68894, -73.98105], [40.68882, -73.98092], [40.68876, -73.98084], [40.68863, -73.98093], [40.68803, -73.98134], [40.68794, -73.9814], [40.68786, -73.98145], [40.68741, -73.98176], [40.68733, -73.98181], [40.68725, -73.98187], [40.68692, -73.9821], [40.68678, -73.98219], [40.68672, -73.98223], [40.68667, -73.98227], [40.68619, -73.98259], [40.68609, -73.98266], [40.68612, -73.98274], [40.6862, -73.98294], [40.68682, -73.98454], [40.68691, -73.98477], [40.68693, -73.98483], [40.68696, -73.98489], [40.68703, -73.98509], [40.68762, -73.98662], [40.68775, -73.98694], [40.68777, -73.987], [40.6878, -73.98707], [40.68787, -73.98726], [40.6882, -73.98809], [40.68846, -73.98878], [40.68858, -73.98909], [40.68862, -73.98917], [40.68865, -73.98926], [40.68889, -73.98994], [40.68903, -73.99034], [40.68905, -73.9904], [40.68907, -73.99048], [40.68914, -73.99068], [40.68918, -73.99079], [40.6892, -73.99085], [40.6894, -73.99145], [40.68943, -73.99156], [40.6896, -73.99207], [40.68966, -73.99228], [40.68969, -73.99237], [40.68972, -73.99247], [40.68979, -73.99273]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+        var popup_a914b332940f2486987a1ef14c90581b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0b3e8efa07d53525e6622ab6e83eecd0 = $(`<div id="html_0b3e8efa07d53525e6622ab6e83eecd0" style="width: 100.0%; height: 100.0%;">距离: 1.61km 时间: 4分钟 从 Trader Joe's Brooklyn - City Point (547) 到 Trader Joe's Brooklyn (558)</div>`)[0];
+                popup_a914b332940f2486987a1ef14c90581b.setContent(html_0b3e8efa07d53525e6622ab6e83eecd0);
+            
+        
+
+        poly_line_e099aadb391872783291f998745a2e49.bindPopup(popup_a914b332940f2486987a1ef14c90581b)
+        ;
+
+        
+    
+    
+            var poly_line_9d871cb0930a5835137a2ad66ca61aa1 = L.polyline(
+                [[40.74403, -73.97884], [40.74422, -73.9787], [40.74428, -73.97866], [40.74392, -73.97779], [40.74369, -73.97726], [40.74356, -73.97695], [40.74351, -73.97682], [40.74345, -73.97687], [40.74294, -73.97724], [40.74289, -73.97727], [40.74283, -73.97732], [40.74276, -73.97737], [40.74243, -73.97761], [40.74235, -73.97766], [40.74227, -73.97772], [40.74221, -73.97777], [40.74171, -73.97813], [40.74166, -73.97817], [40.74158, -73.97823], [40.74124, -73.9785], [40.74114, -73.97857], [40.7411, -73.9786], [40.74104, -73.97864], [40.74098, -73.97869], [40.74075, -73.97886], [40.74047, -73.97905], [40.74042, -73.97909], [40.74036, -73.97913], [40.74014, -73.97929], [40.73986, -73.97949], [40.7398, -73.97953], [40.73974, -73.97957], [40.73924, -73.97994], [40.73918, -73.97998], [40.73912, -73.98002], [40.7389, -73.98019], [40.73862, -73.98039], [40.73856, -73.98043], [40.7385, -73.98047], [40.73828, -73.98063], [40.73799, -73.98084], [40.73789, -73.98091], [40.7378, -73.98098], [40.7376, -73.98112], [40.73752, -73.98118], [40.73728, -73.98135], [40.73722, -73.9814], [40.73717, -73.98143], [40.73671, -73.98177], [40.73667, -73.9818], [40.73661, -73.98184], [40.73655, -73.98189], [40.73627, -73.98209], [40.73613, -73.98219], [40.73608, -73.98223], [40.73602, -73.98227], [40.73596, -73.98231], [40.73568, -73.98252], [40.73549, -73.98266], [40.73543, -73.9827], [40.73538, -73.98274], [40.73508, -73.98295], [40.7349, -73.98308], [40.73485, -73.98312], [40.73479, -73.98316], [40.73458, -73.98332], [40.73448, -73.98339], [40.73432, -73.9835], [40.73426, -73.98355], [40.73421, -73.98359], [40.7339, -73.98381], [40.73375, -73.98392], [40.73368, -73.98398], [40.73336, -73.9842], [40.7331, -73.9844], [40.73303, -73.98444], [40.73308, -73.98456], [40.73337, -73.98524], [40.7334, -73.98531], [40.73363, -73.98585], [40.73391, -73.9865], [40.73393, -73.98655], [40.73398, -73.98669], [40.73393, -73.98673], [40.73388, -73.98676], [40.73375, -73.98686], [40.7336, -73.98697], [40.73344, -73.98708], [40.73339, -73.98712], [40.7333, -73.98719], [40.73336, -73.98732], [40.73338, -73.98738], [40.73348, -73.98762], [40.73355, -73.98778]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+        var popup_aa653ff216ea0cdfa6c8b27e2e057de7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f82ebc8e8ac1fb20f141c21091c6ee1a = $(`<div id="html_f82ebc8e8ac1fb20f141c21091c6ee1a" style="width: 100.0%; height: 100.0%;">距离: 1.90km 时间: 4分钟 从 Trader Joe's New York - Murray Hill (544) 到 Trader Joe's Union Square (540)</div>`)[0];
+                popup_aa653ff216ea0cdfa6c8b27e2e057de7.setContent(html_f82ebc8e8ac1fb20f141c21091c6ee1a);
+            
+        
+
+        poly_line_9d871cb0930a5835137a2ad66ca61aa1.bindPopup(popup_aa653ff216ea0cdfa6c8b27e2e057de7)
+        ;
+
+        
+    
+    
+            var poly_line_899e8a2bd1982c24cdd8214f79931c7e = L.polyline(
+                [[40.74172, -73.99395], [40.74276, -73.99641], [40.74278, -73.99645], [40.74283, -73.99657], [40.74276, -73.99662], [40.74241, -73.99687], [40.74233, -73.99693], [40.74229, -73.99696], [40.74223, -73.997], [40.74217, -73.99705], [40.74171, -73.99739], [40.74164, -73.99743], [40.74159, -73.99747], [40.74125, -73.99772], [40.74112, -73.99782], [40.74106, -73.99786], [40.741, -73.9979], [40.74053, -73.99825], [40.74047, -73.99829], [40.74041, -73.99833], [40.74007, -73.99858], [40.73994, -73.99867], [40.73988, -73.99871], [40.73983, -73.99875], [40.73931, -73.99914], [40.73925, -73.99918], [40.73919, -73.99922], [40.73894, -73.9994], [40.73865, -73.99961], [40.73856, -73.99968], [40.73851, -73.99956], [40.73839, -73.99927], [40.73836, -73.99918], [40.73826, -73.99896], [40.73779, -73.99784], [40.73776, -73.99777], [40.73766, -73.99755], [40.73756, -73.99731], [40.73742, -73.99698], [40.73736, -73.99684], [40.73731, -73.99671], [40.73719, -73.99644], [40.73705, -73.99609], [40.73624, -73.99417], [40.73622, -73.99412], [40.73606, -73.99375], [40.73601, -73.99363], [40.73596, -73.99351], [40.73545, -73.99231], [40.73534, -73.99204], [40.73527, -73.99189], [40.73523, -73.99179], [40.7352, -73.99172], [40.73516, -73.99162], [40.73487, -73.99092], [40.73484, -73.99085], [40.73479, -73.99074], [40.73474, -73.99063], [40.73472, -73.99058], [40.73448, -73.99002], [40.73443, -73.98989], [40.73438, -73.98977], [40.73432, -73.98962], [40.73429, -73.98954], [40.73406, -73.98901], [40.73403, -73.98894], [40.734, -73.98887], [40.73397, -73.98879], [40.73394, -73.98871], [40.73391, -73.98865], [40.7338, -73.98836], [40.73355, -73.98778]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+        var popup_5dbc96a76fbb36edc1a8af27a9f51be2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_182265effe787c2427d0d12bb0bbfe0d = $(`<div id="html_182265effe787c2427d0d12bb0bbfe0d" style="width: 100.0%; height: 100.0%;">距离: 1.94km 时间: 4分钟 从 Trader Joe's Chelsea (543) 到 Trader Joe's Union Square (540)</div>`)[0];
+                popup_5dbc96a76fbb36edc1a8af27a9f51be2.setContent(html_182265effe787c2427d0d12bb0bbfe0d);
+            
+        
+
+        poly_line_899e8a2bd1982c24cdd8214f79931c7e.bindPopup(popup_5dbc96a76fbb36edc1a8af27a9f51be2)
+        ;
+
+        
+    
+    
+            var poly_line_4a3ab8c4d3485c4b9b541c088047f34b = L.polyline(
+                [[40.73066, -73.98095], [40.73071, -73.98102], [40.73072, -73.98105], [40.73073, -73.98107], [40.73103, -73.98177], [40.73115, -73.98206], [40.73121, -73.9822], [40.73131, -73.98243], [40.73136, -73.98256], [40.73144, -73.9825], [40.73185, -73.9822], [40.7319, -73.98215], [40.73198, -73.9821], [40.73203, -73.98206], [40.7321, -73.98201], [40.73233, -73.98185], [40.73261, -73.98164], [40.73266, -73.9816], [40.73273, -73.98155], [40.73285, -73.98146], [40.73292, -73.98141], [40.73307, -73.9813], [40.7332, -73.9812], [40.73326, -73.98115], [40.73331, -73.98112], [40.7336, -73.98091], [40.73376, -73.98078], [40.73383, -73.98074], [40.73388, -73.9807], [40.73425, -73.98044], [40.73437, -73.98035], [40.73443, -73.98031], [40.73448, -73.98027], [40.73489, -73.97998], [40.73494, -73.97994], [40.73501, -73.97989], [40.73508, -73.97984], [40.73529, -73.97969], [40.73533, -73.97966], [40.73541, -73.9796], [40.73555, -73.9795], [40.73561, -73.97945], [40.73566, -73.97941], [40.73603, -73.97915], [40.73616, -73.97906], [40.73622, -73.97901], [40.73629, -73.97899], [40.73638, -73.97892], [40.7368, -73.97861], [40.7369, -73.97854], [40.737, -73.97847], [40.73722, -73.97831], [40.73749, -73.9781], [40.73756, -73.97805], [40.73762, -73.97801], [40.73798, -73.97774], [40.73804, -73.9777], [40.73812, -73.97764], [40.73817, -73.97761], [40.73824, -73.97774], [40.73846, -73.97827], [40.73851, -73.97839], [40.73893, -73.9794], [40.73912, -73.97983], [40.73918, -73.97998], [40.73924, -73.98011], [40.73996, -73.98182], [40.74005, -73.98202], [40.74006, -73.98207], [40.74013, -73.98222], [40.74017, -73.98218], [40.74019, -73.98217], [40.74065, -73.98184], [40.74069, -73.98181], [40.74075, -73.98177], [40.7408, -73.98173], [40.74126, -73.98139], [40.74131, -73.98136], [40.74136, -73.98132], [40.74142, -73.98128], [40.74188, -73.98095], [40.74192, -73.98091], [40.74198, -73.98087], [40.74204, -73.98083], [40.74249, -73.9805], [40.74254, -73.98046], [40.7426, -73.98042], [40.74266, -73.98038], [40.74311, -73.98005], [40.74315, -73.98001], [40.74322, -73.97997], [40.74327, -73.97993], [40.74373, -73.97959], [40.74377, -73.97956], [40.74384, -73.97952], [40.74389, -73.97948], [40.74436, -73.97914], [40.74439, -73.97911], [40.74445, -73.97907], [40.74439, -73.97891], [40.74428, -73.97866], [40.74422, -73.9787], [40.74403, -73.97884]],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+        var popup_ed6522efc25460e544a7b3781ff4e628 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d0d5f13494c24659b8d3084ec5dd7256 = $(`<div id="html_d0d5f13494c24659b8d3084ec5dd7256" style="width: 100.0%; height: 100.0%;">距离: 2.09km 时间: 5分钟 从 Trader Joe's East Village (546) 到 Trader Joe's New York - Murray Hill (544)</div>`)[0];
+                popup_ed6522efc25460e544a7b3781ff4e628.setContent(html_d0d5f13494c24659b8d3084ec5dd7256);
+            
+        
+
+        poly_line_4a3ab8c4d3485c4b9b541c088047f34b.bindPopup(popup_ed6522efc25460e544a7b3781ff4e628)
+        ;
+
+        
+    
+    
+            var poly_line_6c7a3d15ff76b04bbc616c0b0fbfbf70 = L.polyline(
+                [[40.72269, -73.84812], [40.7227, -73.84802], [40.7222, -73.84764], [40.72208, -73.84772], [40.72209, -73.84776], [40.72214, -73.8479], [40.72209, -73.84793], [40.72216, -73.84811], [40.72246, -73.84891], [40.7225, -73.84902], [40.72251, -73.84903], [40.72254, -73.84906], [40.72265, -73.84914], [40.72263, -73.84929], [40.72261, -73.84946], [40.72261, -73.8498], [40.7226, -73.84996], [40.7226, -73.8501], [40.72258, -73.8508], [40.72258, -73.85089], [40.72258, -73.85098], [40.72259, -73.85143], [40.7226, -73.85146], [40.7226, -73.85163], [40.7226, -73.85185], [40.72259, -73.85191], [40.72258, -73.85196], [40.72256, -73.8521], [40.72256, -73.85211], [40.72247, -73.8524], [40.72232, -73.85279], [40.72223, -73.85301], [40.72206, -73.85337], [40.72201, -73.85348], [40.72198, -73.85358], [40.72197, -73.85359], [40.72187, -73.85386], [40.72177, -73.85414], [40.72165, -73.85448], [40.72162, -73.85457], [40.72158, -73.85465], [40.72152, -73.85479], [40.72142, -73.85493], [40.7214, -73.85496], [40.7213, -73.85505], [40.72112, -73.85516], [40.72106, -73.85519], [40.721, -73.85522], [40.72081, -73.85531], [40.72064, -73.85539], [40.72044, -73.85548], [40.72038, -73.85551], [40.72033, -73.85553], [40.72013, -73.85563], [40.71996, -73.8557], [40.71977, -73.8558], [40.7197, -73.85582], [40.71965, -73.85585], [40.71932, -73.85601], [40.71922, -73.85606], [40.71909, -73.85612], [40.71903, -73.85615], [40.71898, -73.85618], [40.71882, -73.85628], [40.71874, -73.85633], [40.71839, -73.85655], [40.71781, -73.85693], [40.71775, -73.85697], [40.71769, -73.857], [40.7174, -73.85719], [40.7171, -73.85737], [40.71701, -73.85743], [40.71659, -73.85769], [40.71653, -73.85773], [40.71646, -73.85777], [40.71544, -73.85842], [40.71532, -73.85849], [40.71531, -73.8585], [40.71516, -73.85858], [40.71499, -73.85869], [40.71456, -73.85896], [40.7145, -73.859], [40.71419, -73.8592], [40.71415, -73.85927], [40.7141, -73.85932], [40.71407, -73.85937], [40.71406, -73.85941], [40.71406, -73.85944], [40.71401, -73.85952], [40.71397, -73.85976], [40.7138, -73.85974], [40.71365, -73.85974], [40.71355, -73.85975], [40.71335, -73.85977], [40.71323, -73.85978], [40.71247, -73.85983], [40.71199, -73.85986], [40.71195, -73.85987], [40.71186, -73.85987], [40.71183, -73.85964], [40.71181, -73.85951], [40.71175, -73.85916], [40.71173, -73.85901], [40.71172, -73.85892], [40.71169, -73.85877], [40.71169, -73.85872], [40.71163, -73.85831], [40.71161, -73.85817], [40.71153, -73.8581], [40.71141, -73.85803], [40.71125, -73.85791]],
+                {"bubblingMouseEvents": true, "color": "lightred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "lightred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+        var popup_c545b03679765efadc079cefac186ec9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_27b2dd9ef65b3f41b897187281f536b3 = $(`<div id="html_27b2dd9ef65b3f41b897187281f536b3" style="width: 100.0%; height: 100.0%;">距离: 2.12km 时间: 5分钟 从 Trader Joe's Forest Hills (578) 到 Trader Joe's Rego Park (557)</div>`)[0];
+                popup_c545b03679765efadc079cefac186ec9.setContent(html_27b2dd9ef65b3f41b897187281f536b3);
+            
+        
+
+        poly_line_6c7a3d15ff76b04bbc616c0b0fbfbf70.bindPopup(popup_c545b03679765efadc079cefac186ec9)
+        ;
+
+        
+    
+    
+            var poly_line_591fc6b2feb6a9fd6c2b8ca8fd2a8bf2 = L.polyline(
+                [[40.74172, -73.99395], [40.74276, -73.99641], [40.74278, -73.99645], [40.74283, -73.99657], [40.74276, -73.99662], [40.74241, -73.99687], [40.74233, -73.99693], [40.74229, -73.99696], [40.74223, -73.997], [40.74217, -73.99705], [40.74171, -73.99739], [40.74164, -73.99743], [40.74159, -73.99747], [40.74125, -73.99772], [40.74112, -73.99782], [40.74106, -73.99786], [40.741, -73.9979], [40.74053, -73.99825], [40.74047, -73.99829], [40.74041, -73.99833], [40.74007, -73.99858], [40.73994, -73.99867], [40.73988, -73.99871], [40.73983, -73.99875], [40.73931, -73.99914], [40.73925, -73.99918], [40.73919, -73.99922], [40.73894, -73.9994], [40.73865, -73.99961], [40.73856, -73.99968], [40.73848, -73.99974], [40.7382, -73.99994], [40.73792, -74.00013], [40.73786, -74.00017], [40.73781, -74.00021], [40.73741, -74.0005], [40.73728, -74.00059], [40.73722, -74.00063], [40.73716, -74.00068], [40.73685, -74.00092], [40.73682, -74.00094], [40.7367, -74.00103], [40.7366, -74.00111], [40.73648, -74.00117], [40.73646, -74.00118], [40.73587, -74.00151], [40.73579, -74.00155], [40.73575, -74.00157], [40.7356, -74.00166], [40.73554, -74.0017], [40.73542, -74.00177], [40.73535, -74.00181], [40.73513, -74.00194], [40.73508, -74.00197], [40.73502, -74.002], [40.73458, -74.00226], [40.7344, -74.00236], [40.73434, -74.0024], [40.73428, -74.00243], [40.73417, -74.00249], [40.734, -74.00259], [40.73382, -74.0027], [40.73373, -74.00274], [40.73368, -74.00277], [40.73361, -74.00281], [40.73351, -74.00287], [40.7333, -74.00298], [40.73323, -74.00303], [40.73315, -74.00307], [40.73282, -74.00326], [40.7327, -74.00333], [40.73251, -74.00344], [40.73232, -74.00355], [40.73229, -74.00356], [40.73225, -74.00358], [40.73214, -74.00365], [40.73189, -74.00379], [40.73141, -74.00407], [40.73121, -74.00418], [40.73113, -74.00423], [40.73108, -74.00426], [40.7308, -74.00441], [40.73072, -74.00446], [40.73067, -74.00449], [40.73039, -74.00465], [40.73032, -74.00469], [40.73026, -74.00472], [40.72979, -74.00502], [40.72955, -74.00514], [40.72946, -74.00519], [40.7294, -74.0052], [40.7293, -74.00522], [40.72885, -74.00529], [40.72868, -74.00531], [40.72862, -74.00532], [40.72855, -74.00533], [40.72847, -74.00534], [40.72796, -74.00541], [40.72788, -74.00543], [40.72782, -74.00544], [40.72723, -74.00553], [40.72716, -74.00555], [40.72709, -74.00556], [40.7265, -74.00565], [40.72644, -74.00566], [40.72637, -74.00563], [40.72631, -74.00561], [40.72574, -74.0057], [40.72568, -74.00571], [40.72567, -74.00565], [40.72561, -74.00505]],
+                {"bubblingMouseEvents": true, "color": "beige", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "beige", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+        var popup_995e66f6a1708ddede5e53c1aa02c89a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f26cddbc7140cbcb318218583475688a = $(`<div id="html_f26cddbc7140cbcb318218583475688a" style="width: 100.0%; height: 100.0%;">距离: 2.39km 时间: 6分钟 从 Trader Joe's Chelsea (543) 到 Trader Joe's SoHo (539)</div>`)[0];
+                popup_995e66f6a1708ddede5e53c1aa02c89a.setContent(html_f26cddbc7140cbcb318218583475688a);
+            
+        
+
+        poly_line_591fc6b2feb6a9fd6c2b8ca8fd2a8bf2.bindPopup(popup_995e66f6a1708ddede5e53c1aa02c89a)
+        ;
+
+        
+    
+    
+            var poly_line_4eb7794879d727192f205c2475716b2e = L.polyline(
+                [[40.72561, -74.00505], [40.72557, -74.00463], [40.72556, -74.00455], [40.72553, -74.00423], [40.72551, -74.00403], [40.72559, -74.004], [40.72571, -74.00395], [40.72619, -74.00375], [40.72625, -74.00373], [40.72632, -74.0037], [40.72689, -74.00347], [40.72696, -74.00345], [40.72703, -74.00342], [40.72715, -74.00337], [40.72733, -74.00329], [40.72761, -74.00318], [40.72766, -74.00316], [40.72774, -74.00313], [40.72814, -74.00296], [40.72823, -74.00292], [40.72826, -74.0029], [40.7283, -74.00288], [40.72837, -74.00285], [40.72847, -74.0028], [40.72853, -74.00277], [40.7287, -74.00269], [40.72891, -74.00258], [40.72956, -74.00226], [40.72961, -74.00224], [40.7297, -74.00219], [40.72975, -74.00216], [40.72988, -74.00209], [40.73046, -74.00175], [40.73055, -74.0017], [40.73059, -74.00168], [40.73083, -74.00155], [40.73101, -74.00144], [40.73106, -74.00141], [40.73113, -74.00137], [40.73134, -74.00122], [40.73165, -74.001], [40.73171, -74.00095], [40.73177, -74.00091], [40.73186, -74.00085], [40.73227, -74.00055], [40.73232, -74.00051], [40.73237, -74.00047], [40.73288, -74.00011], [40.73293, -74.00007], [40.73299, -74.00002], [40.73317, -73.99989], [40.73358, -73.99959], [40.73366, -73.99952], [40.73376, -73.99945], [40.73408, -73.99923], [40.73415, -73.99918], [40.73422, -73.99913], [40.73472, -73.99876], [40.73479, -73.99871], [40.73485, -73.99867], [40.73499, -73.99857], [40.73511, -73.99848], [40.73534, -73.99831], [40.73539, -73.99827], [40.73545, -73.99823], [40.73598, -73.99785], [40.73603, -73.99781], [40.73609, -73.99776], [40.73629, -73.99761], [40.73641, -73.99753], [40.73661, -73.99738], [40.73667, -73.99734], [40.73673, -73.9973], [40.7369, -73.99718], [40.73711, -73.99702], [40.73728, -73.9969], [40.73734, -73.99685], [40.73736, -73.99684], [40.73731, -73.99671], [40.73719, -73.99644], [40.73705, -73.99609], [40.73624, -73.99417], [40.73622, -73.99412], [40.73606, -73.99375], [40.73601, -73.99363], [40.73596, -73.99351], [40.73545, -73.99231], [40.73534, -73.99204], [40.73527, -73.99189], [40.73523, -73.99179], [40.7352, -73.99172], [40.73516, -73.99162], [40.73487, -73.99092], [40.73484, -73.99085], [40.73479, -73.99074], [40.73474, -73.99063], [40.73472, -73.99058], [40.73448, -73.99002], [40.73443, -73.98989], [40.73438, -73.98977], [40.73432, -73.98962], [40.73429, -73.98954], [40.73406, -73.98901], [40.73403, -73.98894], [40.734, -73.98887], [40.73397, -73.98879], [40.73394, -73.98871], [40.73391, -73.98865], [40.7338, -73.98836], [40.73355, -73.98778]],
+                {"bubblingMouseEvents": true, "color": "darkblue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkblue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+        var popup_04e0dff0f3870d28a9289f8781a6c008 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1ac16fedda195e83581a11c6f1e849c3 = $(`<div id="html_1ac16fedda195e83581a11c6f1e849c3" style="width: 100.0%; height: 100.0%;">距离: 2.42km 时间: 5分钟 从 Trader Joe's SoHo (539) 到 Trader Joe's Union Square (540)</div>`)[0];
+                popup_04e0dff0f3870d28a9289f8781a6c008.setContent(html_1ac16fedda195e83581a11c6f1e849c3);
+            
+        
+
+        poly_line_4eb7794879d727192f205c2475716b2e.bindPopup(popup_04e0dff0f3870d28a9289f8781a6c008)
+        ;
+
+        
+    
+    
+            var poly_line_150811a2e18a5df4078aa9f25496bb4e = L.polyline(
+                [[40.77858, -73.9821], [40.77824, -73.98215], [40.77808, -73.98217], [40.77795, -73.98218], [40.77787, -73.98218], [40.7778, -73.98218], [40.77763, -73.98219], [40.77724, -73.98221], [40.77714, -73.98222], [40.77705, -73.982], [40.77714, -73.982], [40.77779, -73.98197], [40.77786, -73.98197], [40.77797, -73.98196], [40.77803, -73.98195], [40.77807, -73.98194], [40.7781, -73.98193], [40.77814, -73.98191], [40.77819, -73.98189], [40.7785, -73.98168], [40.7786, -73.98161], [40.7787, -73.98154], [40.77904, -73.9813], [40.77923, -73.98115], [40.77928, -73.98112], [40.77935, -73.98107], [40.77987, -73.9807], [40.77992, -73.98066], [40.77998, -73.98062], [40.78041, -73.98032], [40.7805, -73.98025], [40.78056, -73.98021], [40.78062, -73.98017], [40.78115, -73.97978], [40.78119, -73.97976], [40.78125, -73.9797], [40.78169, -73.97939], [40.78178, -73.97932], [40.78184, -73.97927], [40.78189, -73.97924], [40.78241, -73.97886], [40.78246, -73.97882], [40.78253, -73.97878], [40.78274, -73.97863], [40.78306, -73.97839], [40.78315, -73.97833], [40.78325, -73.97826], [40.78378, -73.97786], [40.78383, -73.97783], [40.78389, -73.97778], [40.78417, -73.97757], [40.78431, -73.97747], [40.78441, -73.9774], [40.78447, -73.97735], [40.78453, -73.97731], [40.78505, -73.97693], [40.7851, -73.97689], [40.78516, -73.97685], [40.78556, -73.97656], [40.78567, -73.97648], [40.78573, -73.97644], [40.7858, -73.97639], [40.78631, -73.97601], [40.78636, -73.97598], [40.78643, -73.97593], [40.78695, -73.97555], [40.787, -73.97551], [40.78706, -73.97546], [40.78728, -73.9753], [40.78759, -73.97508], [40.78769, -73.97501], [40.78778, -73.97494], [40.78821, -73.97463], [40.78832, -73.97455], [40.78836, -73.97452], [40.78842, -73.97447], [40.78894, -73.9741], [40.78899, -73.97406], [40.78905, -73.97401], [40.78947, -73.97371], [40.78957, -73.97364], [40.78961, -73.9736], [40.78968, -73.97356], [40.79019, -73.97318], [40.79024, -73.97314], [40.79031, -73.9731], [40.79072, -73.9728], [40.79081, -73.97273], [40.79088, -73.97268], [40.79093, -73.97264], [40.79145, -73.97227], [40.79151, -73.97223], [40.79156, -73.97219], [40.79183, -73.972], [40.79207, -73.97182], [40.79213, -73.97178], [40.79219, -73.97173], [40.79253, -73.97149], [40.7927, -73.97136], [40.79276, -73.97132], [40.79271, -73.9712], [40.79268, -73.97112], [40.79248, -73.97066], [40.79243, -73.97052], [40.79205, -73.96964], [40.79197, -73.96944], [40.79167, -73.96873], [40.79162, -73.9686], [40.79157, -73.9685], [40.79152, -73.96853], [40.79101, -73.96892], [40.79094, -73.96897], [40.79089, -73.96901], [40.7908, -73.96907]],
+                {"bubblingMouseEvents": true, "color": "darkgreen", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkgreen", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+        var popup_2fd0074870b592a3b2bf1633a74deb8a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b704730baf6cc03776f8b02913e53255 = $(`<div id="html_b704730baf6cc03776f8b02913e53255" style="width: 100.0%; height: 100.0%;">距离: 2.53km 时间: 4分钟 从 Trader Joe's 72nd & Broadway (542) 到 Trader Joe's Upper West Side (545)</div>`)[0];
+                popup_2fd0074870b592a3b2bf1633a74deb8a.setContent(html_b704730baf6cc03776f8b02913e53255);
+            
+        
+
+        poly_line_150811a2e18a5df4078aa9f25496bb4e.bindPopup(popup_2fd0074870b592a3b2bf1633a74deb8a)
+        ;
+
+        
+    
+    
+            var poly_line_c3da2f21648fefec17cdf93dc277ac13 = L.polyline(
+                [[40.74172, -73.99395], [40.74276, -73.99641], [40.74278, -73.99645], [40.74283, -73.99657], [40.74276, -73.99662], [40.74241, -73.99687], [40.74233, -73.99693], [40.74229, -73.99696], [40.74223, -73.997], [40.74218, -73.99689], [40.74112, -73.99437], [40.74109, -73.9943], [40.74103, -73.99417], [40.74109, -73.99412], [40.74146, -73.99385], [40.74153, -73.99381], [40.74156, -73.99378], [40.74163, -73.99373], [40.74168, -73.99369], [40.74218, -73.99333], [40.74223, -73.99329], [40.7423, -73.99324], [40.74255, -73.99306], [40.7428, -73.99288], [40.74291, -73.9928], [40.743, -73.99273], [40.74351, -73.99236], [40.74357, -73.99232], [40.74364, -73.99227], [40.74404, -73.99198], [40.74414, -73.99191], [40.74419, -73.99187], [40.74425, -73.99182], [40.74475, -73.99146], [40.74482, -73.99141], [40.74487, -73.99137], [40.74523, -73.99111], [40.74536, -73.99101], [40.74542, -73.99097], [40.74548, -73.99092], [40.74585, -73.99066], [40.74598, -73.99056], [40.74604, -73.99052], [40.7461, -73.99047], [40.74623, -73.99038], [40.74644, -73.99024], [40.74661, -73.99011], [40.74662, -73.9901], [40.74667, -73.99007], [40.74672, -73.99003], [40.74722, -73.98966], [40.74728, -73.98962], [40.74734, -73.98957], [40.7477, -73.98931], [40.74783, -73.9892], [40.7479, -73.98916], [40.74795, -73.98912], [40.7481, -73.98901], [40.74846, -73.98873], [40.74851, -73.9887], [40.74847, -73.98859], [40.74838, -73.98837], [40.74834, -73.98827], [40.74831, -73.98819], [40.74826, -73.98808], [40.74799, -73.98748], [40.74723, -73.98569], [40.74721, -73.98563], [40.74715, -73.98549], [40.74711, -73.98538], [40.74691, -73.98492], [40.74653, -73.98399], [40.74648, -73.98389], [40.74644, -73.9838], [40.7459, -73.98251], [40.74587, -73.98244], [40.74583, -73.98234], [40.74578, -73.98222], [40.74574, -73.98212], [40.7454, -73.98133], [40.74519, -73.98083], [40.74517, -73.98077], [40.74513, -73.98067], [40.74508, -73.98056], [40.74468, -73.9796], [40.74454, -73.97926], [40.74451, -73.9792], [40.74445, -73.97907], [40.74439, -73.97891], [40.74428, -73.97866], [40.74422, -73.9787], [40.74403, -73.97884]],
+                {"bubblingMouseEvents": true, "color": "cadetblue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "cadetblue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_f10b58d8a5c14602f8fa2732c4c74e7e);
+        
+    
+        var popup_b21ce02aa14253371514f020c64f8e1c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_615a0841eef461c7b2b257fc21210f82 = $(`<div id="html_615a0841eef461c7b2b257fc21210f82" style="width: 100.0%; height: 100.0%;">距离: 2.55km 时间: 6分钟 从 Trader Joe's Chelsea (543) 到 Trader Joe's New York - Murray Hill (544)</div>`)[0];
+                popup_b21ce02aa14253371514f020c64f8e1c.setContent(html_615a0841eef461c7b2b257fc21210f82);
+            
+        
+
+        poly_line_c3da2f21648fefec17cdf93dc277ac13.bindPopup(popup_b21ce02aa14253371514f020c64f8e1c)
+        ;
+
+        
+    
+</script>
+</html>
