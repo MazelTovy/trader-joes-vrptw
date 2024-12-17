@@ -1,0 +1,1 @@
+### Optimizing fresh flower logistics for Trader Joe's in NYC using time penalties in route design
